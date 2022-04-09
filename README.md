@@ -1,8 +1,6 @@
 # React App
 
-React app with SPA,Gallery,Slideshow and Memory game.
-
-SPA is using react router dom.
+React app with SPA,Gallery,Slideshow and Memory game. SPA is using react router dom.
 
 Gallery:
 
