@@ -20,6 +20,11 @@ Memory game:
 Simple 6x6 memory game with react.
 Can count the number of click
 
+The memory game section refers to Coding With Dawid's work.
+GitHub link: https://github.com/dejwid/react-memo
+
+Youtube link: https://www.youtube.com/watch?v=k91Erl0VAc8
+
 Output image:
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/60846680/162586076-61bb33c6-2b4b-4ed8-8d8d-2010a4386449.png">
 <img width="959" alt="image" src="https://user-images.githubusercontent.com/60846680/162586089-6e12174e-760a-41a7-a27b-ed8c4fdaf6f5.png">
@@ -28,6 +33,4 @@ Output image:
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/60846680/162586252-34d7efad-2eb8-4658-b472-983d49bf94c9.png">
 
 
-The memory game section refers to Coding With Dawid's work.
-GitHub link: https://github.com/dejwid/react-memo
-Youtube link: https://www.youtube.com/watch?v=k91Erl0VAc8
+
