@@ -31,11 +31,12 @@ GitHub link: https://github.com/dejwid/react-memo
 Youtube link: https://www.youtube.com/watch?v=k91Erl0VAc8
 
 # Output image:
-<img width="960" alt="image" src="https://user-images.githubusercontent.com/60846680/162586076-61bb33c6-2b4b-4ed8-8d8d-2010a4386449.png">
-<img width="959" alt="image" src="https://user-images.githubusercontent.com/60846680/162586089-6e12174e-760a-41a7-a27b-ed8c4fdaf6f5.png">
-<img width="960" alt="image" src="https://user-images.githubusercontent.com/60846680/162586233-802b6f6d-87c2-4033-bf8c-e3271cc1e1b8.png">
-<img width="959" alt="image" src="https://user-images.githubusercontent.com/60846680/162586247-bf89b917-1953-4312-845e-973dfa853082.png">
-<img width="960" alt="image" src="https://user-images.githubusercontent.com/60846680/162586252-34d7efad-2eb8-4658-b472-983d49bf94c9.png">
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/60846680/162586884-a42bfd5e-9483-48ee-8eb7-7f22917d2844.png">
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/60846680/162586890-92a6b7d9-8fd8-4b7e-8e4b-f825da63892a.png">
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/60846680/162586899-23b91a05-9579-4234-a9ba-ab3c1832fd34.png">
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/60846680/162586908-fd920efb-564a-417f-97c9-cf10cf1bc13d.png">
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/60846680/162586918-6a137807-c7df-4acb-a1c9-f7a8dabefad4.png">
+
 
 
 
