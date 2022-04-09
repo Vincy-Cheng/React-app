@@ -1,0 +1,21 @@
+import Image01 from './cards/01.jpg';
+import Image02 from './cards/02.jpg';
+import Image03 from './cards/03.jpg';
+import Image04 from './cards/04.jpg';
+import Image05 from './cards/05.jpg';
+import Image06 from './cards/06.jpg';
+import Image07 from './cards/07.jpg';
+import Image08 from './cards/08.jpg';
+import Image09 from './cards/09.jpg';
+import Image10 from './cards/10.jpg';
+import Image11 from './cards/11.jpg';
+import Image12 from './cards/12.jpg';
+import Image13 from './cards/13.jpg';
+import Image14 from './cards/14.jpg';
+import Image15 from './cards/15.jpg';
+import Image16 from './cards/16.jpg';
+import Image17 from './cards/17.jpg';
+import Image18 from './cards/18.jpg';
+
+const Images = [Image01, Image02, Image03, Image04, Image05, Image06, Image07, Image08, Image09, Image10, Image11, Image12, Image13, Image14, Image15, Image16, Image17, Image18];
+export default Images;
