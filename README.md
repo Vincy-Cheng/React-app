@@ -30,7 +30,7 @@ GitHub link: https://github.com/dejwid/react-memo
 
 Youtube link: https://www.youtube.com/watch?v=k91Erl0VAc8
 
-Output image:
+# Output image:
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/60846680/162586076-61bb33c6-2b4b-4ed8-8d8d-2010a4386449.png">
 <img width="959" alt="image" src="https://user-images.githubusercontent.com/60846680/162586089-6e12174e-760a-41a7-a27b-ed8c4fdaf6f5.png">
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/60846680/162586233-802b6f6d-87c2-4033-bf8c-e3271cc1e1b8.png">
