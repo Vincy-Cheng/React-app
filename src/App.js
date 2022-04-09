@@ -26,62 +26,62 @@ const data = [
   },
 ];
 
-const CS = [
-  {
-    filename: "01.jpg"
-  },
-  {
-    filename: "02.jpg"
-  },
-  {
-    filename: "03.jpg"
-  },
-  {
-    filename: "04.jpg"
-  },
-  {
-    filename: "05.jpg"
-  },
-  {
-    filename: "06.jpg"
-  },
-  {
-    filename: "07.jpg"
-  },
-  {
-    filename: "08.jpg"
-  },
-  {
-    filename: "09.jpg"
-  },
-  {
-    filename: "10.jpg"
-  },
-  {
-    filename: "11.jpg"
-  },
-  {
-    filename: "12.jpg"
-  },
-  {
-    filename: "13.jpg"
-  },
-  {
-    filename: "14.jpg"
-  },
-  {
-    filename: "15.jpg"
-  },
-  {
-    filename: "16.jpg"
-  },
-  {
-    filename: "17.jpg"
-  },
-  {
-    filename: "18.jpg"
-  },
-]
+// const CS = [
+//   {
+//     filename: "01.jpg"
+//   },
+//   {
+//     filename: "02.jpg"
+//   },
+//   {
+//     filename: "03.jpg"
+//   },
+//   {
+//     filename: "04.jpg"
+//   },
+//   {
+//     filename: "05.jpg"
+//   },
+//   {
+//     filename: "06.jpg"
+//   },
+//   {
+//     filename: "07.jpg"
+//   },
+//   {
+//     filename: "08.jpg"
+//   },
+//   {
+//     filename: "09.jpg"
+//   },
+//   {
+//     filename: "10.jpg"
+//   },
+//   {
+//     filename: "11.jpg"
+//   },
+//   {
+//     filename: "12.jpg"
+//   },
+//   {
+//     filename: "13.jpg"
+//   },
+//   {
+//     filename: "14.jpg"
+//   },
+//   {
+//     filename: "15.jpg"
+//   },
+//   {
+//     filename: "16.jpg"
+//   },
+//   {
+//     filename: "17.jpg"
+//   },
+//   {
+//     filename: "18.jpg"
+//   },
+// ]
 function App() {
   return (
     <>
@@ -89,23 +89,31 @@ function App() {
       {/* Title component & Gallery component */}
       <Title name="React App" />
       <BrowserRouter>
+        <div className='row'>
+          <div className='col-2 list'>
+            <ul>
+              <LongLink to="/" label="Home" />
+              <LongLink to="/gallery" label="Images" />
+              <LongLink to="/slideshow" label="Slideshow" />
+              <LongLink to="/memory_game" label="Memory_game" />
+
+            </ul>
+            {/* <hr /> */}
+          </div>
+          <div className='col-10'>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/slideshow" element={<Slideshow />} />
+              <Route path="/memory_game" element={<Memory_game />} />
+              <Route path="*" element={<NoMatch />} />
+            </Routes>
+          </div>
+        </div>
         <div>
-          <ul>
-            <LongLink to="/" label="Home" />
-            <LongLink to="/gallery" label="Images" />
-            <LongLink to="/slideshow" label="Slideshow" />
-            <LongLink to="/memory_game" label="Memory_game" />
 
-          </ul>
-          <hr />
 
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/slideshow" element={<Slideshow />} />
-            <Route path="/memory_game" element={<Memory_game />} />
-            <Route path="*" element={<NoMatch />} />
-          </Routes>
+
         </div>
       </BrowserRouter>
     </>
@@ -117,7 +125,7 @@ class Title extends React.Component {
   render() {
     return (
       // that is bootstrap element
-      <header className="bg-warning">
+      <header className="bg-warning px-2 py-2">
         {/* right now is CUHK Pictures */}
         <h1 className="display-4 textcenter">{this.props.name}</h1>
       </header>
@@ -377,7 +385,7 @@ function Memory_game() {
         Clicks: {clicks} &nbsp;&nbsp;&nbsp; Found pairs:{foundPairs.length / 2}
         <br />
         Click restart button to start a new game
-        <button className='btn btn-danger mx-2'onClick={() => restart()}>restart</button>
+        <button className='btn btn-danger mx-2' onClick={() => restart()}>restart</button>
       </div>
     </div>
   );
