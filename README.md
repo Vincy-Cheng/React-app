@@ -5,22 +5,29 @@ React app with SPA,Gallery,Slideshow and Memory game.
 SPA is using react router dom.
 
 Gallery:
+
 Display an array of image files with onMouseOver() and onMouseOut() function
 
 Slideshow:
+
 Display an array of image files like a slideshow with 4 buttons
 
 4 buttons function:
+
 • Start slideshow: the next image (and filename) in the array should be shown one by one, and looping back to the beginning after each round (default interval: every 1500ms)
+
 • Stop slideshow: there should be no more change in the image
+
 • Slower: the changing interval would be increased by 250ms
+
 • Faster: the changing interval would be decreased by 250ms
 
 Memory game:
-Simple 6x6 memory game with react.
-Can count the number of click
+
+Simple 6x6 memory game with react. Can count the number of click
 
 The memory game section refers to Coding With Dawid's work.
+
 GitHub link: https://github.com/dejwid/react-memo
 
 Youtube link: https://www.youtube.com/watch?v=k91Erl0VAc8
