@@ -84,3 +84,7 @@
   padding: 20px auto;
   font-size: 20px;
 }
+
+.list{
+  border-right: darkgray 1px solid;
+}
