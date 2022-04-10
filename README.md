@@ -2,11 +2,11 @@
 
 React app with SPA,Gallery,Slideshow, Memory game and Tictactoe. SPA is using react router dom.
 
-Gallery:
+# Gallery:
 
 Display an array of image files with onMouseOver() and onMouseOut() function
 
-Slideshow:
+# Slideshow:
 
 Display an array of image files like a slideshow with 4 buttons
 
@@ -20,7 +20,7 @@ Display an array of image files like a slideshow with 4 buttons
 
 • Faster: the changing interval would be decreased by 250ms
 
-Memory game:
+# Memory game:
 
 Simple 6x6 memory game with react. Can count the number of click
 
@@ -30,7 +30,7 @@ GitHub link: https://github.com/dejwid/react-memo
 
 Youtube link: https://www.youtube.com/watch?v=k91Erl0VAc8
 
-Tictactoe:
+# Tictactoe:
 
 Simple tictactoe game with react. Can show who is the turn.
 
