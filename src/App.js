@@ -1,28 +1,45 @@
-import logo from './logo.svg';
+import logo from "./logo.svg";
 // import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
-import React from 'react';
-import Images from './Images';
+import "./App.css";
+import React from "react";
+import Images from "./Images";
 import { useState } from "react";
-import { shuffle } from 'lodash';
-import { BrowserRouter, Routes, Route, Link, useMatch, useParams, useLocation } from 'react-router-dom';
-
+import { shuffle } from "lodash";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  useMatch,
+  useParams,
+  useLocation,
+} from "react-router-dom";
 
 const data = [
   {
-    filename: "cuhk-2013.jpg", year: 2013, remarks: "Sunset over CUHK"
+    filename: "cuhk-2013.jpg",
+    year: 2013,
+    remarks: "Sunset over CUHK",
   },
   {
-    filename: "cuhk-2017.jpg", year: 2017, remarks: "Bird's-eye view of CUHK"
+    filename: "cuhk-2017.jpg",
+    year: 2017,
+    remarks: "Bird's-eye view of CUHK",
   },
   {
-    filename: "sci-2013.jpg", year: 2013, remarks: "The CUHK Emblem"
+    filename: "sci-2013.jpg",
+    year: 2013,
+    remarks: "The CUHK Emblem",
   },
   {
-    filename: "shb-2013.jpg", year: 2013, remarks: "The Engineering Buildings"
+    filename: "shb-2013.jpg",
+    year: 2013,
+    remarks: "The Engineering Buildings",
   },
   {
-    filename: "stream-2009.jpg", year: 2009, remarks: "Nature hidden in the campus"
+    filename: "stream-2009.jpg",
+    year: 2009,
+    remarks: "Nature hidden in the campus",
   },
 ];
 
@@ -89,45 +106,45 @@ function App() {
       {/* Title component & Gallery component */}
       <Title name="React App" />
       <BrowserRouter>
-        <div className='row'>
-          <div className='col-2 list'>
+        <div className="row">
+          <div className="col-2 list ">
             <ul>
               <LongLink to="/" label="Home" />
               <LongLink to="/gallery" label="Images" />
               <LongLink to="/slideshow" label="Slideshow" />
               <LongLink to="/memory_game" label="Memory_game" />
-
+              <LongLink to="/tictactoe" label="Tictactoe" />
             </ul>
             {/* <hr /> */}
           </div>
-          <div className='col-10'>
+          <div className="col content">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/slideshow" element={<Slideshow />} />
               <Route path="/memory_game" element={<Memory_game />} />
+              <Route path="/tictactoe" element={<Tictactoe />} />
               <Route path="*" element={<NoMatch />} />
             </Routes>
           </div>
         </div>
-        <div>
-
-
-
-        </div>
+        <div></div>
       </BrowserRouter>
     </>
   );
 }
 
-
 class Title extends React.Component {
   render() {
     return (
       // that is bootstrap element
-      <header className="bg-warning px-2 py-2">
+      <header
+        className="bg-warning px-2 py-2 titlehead"
+        style={{ width: "100vw" }}
+      >
         {/* right now is CUHK Pictures */}
-        <h1 className="display-4 textcenter">{this.props.name}</h1>
+        <h1 className="display-4 textcenter ">{this.props.name}</h1>
+        <p>Created by Cheng Wing Lam</p>
       </header>
     );
   }
@@ -135,25 +152,23 @@ class Title extends React.Component {
 
 class Home extends React.Component {
   render() {
-    return <div className="m-2">
-      <h2>Home</h2>
-      <h5>Tree diagram of react component</h5>
-      <img src="Tree-diagram.png" alt="diagram" />
-    </div>;
+    return (
+      <div className="p-2">
+        <h2>Home</h2>
+        <h5>Tree diagram of react component</h5>
+        <img src="Tree-diagram.png" alt="diagram" style={{ width: "80vw" }} />
+      </div>
+    );
   }
 }
 
 class Gallery extends React.Component {
   render() {
-    return (
-
-      data.map((file, index) => <FileCard i={index} key={index} />)
-    );
+    return data.map((file, index) => <FileCard i={index} key={index} />);
   }
 }
 
 class FileCard extends React.Component {
-
   handleClick(index, e) {
     if (this.state.selected != index) {
       this.setState({ selected: index });
@@ -166,38 +181,35 @@ class FileCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = { selected: -1 };
-    {/* this syntax should only be used
+    {
+      /* this syntax should only be used
       in the constructor, and otherwise
-      this.setState() must be used */}
+      this.setState() must be used */
+    }
   }
 
   render() {
-
-
     let i = this.props.i;
     return (
-      <div className="card d-inline-block m-2"
-
+      <div
+        className="card d-inline-block m-2"
         style={{ width: this.state.selected == i ? 220 : 200 }}
         onMouseOver={(e) => this.handleClick(i, e)}
-        onMouseOut={(e) => this.handleClick(i, e)}>
-        <img src={"images/" + data[i].filename}
-          className="w-100"
-        />
+        onMouseOut={(e) => this.handleClick(i, e)}
+      >
+        <img src={"images/" + data[i].filename} className="w-100" />
         <div className="card-body">
-          <h6 className="card-title">
-            {data[i].filename}</h6>
-          <p className="card-text">
-            {data[i].year}</p>
+          <h6 className="card-title">{data[i].filename}</h6>
+          <p className="card-text">{data[i].year}</p>
         </div>
       </div>
-    )
+    );
   }
 }
 
 function LongLink({ label, to }) {
   let match = useMatch({
-    path: to
+    path: to,
   });
   return (
     <li className={match ? "active" : ""}>
@@ -206,7 +218,6 @@ function LongLink({ label, to }) {
     </li>
   );
 }
-
 
 function NoMatch() {
   let location = useLocation();
@@ -219,11 +230,7 @@ function NoMatch() {
   );
 }
 
-
-
-
 class Slideshow extends React.Component {
-
   play() {
     let len = data.length;
     // useEffect()
@@ -234,83 +241,103 @@ class Slideshow extends React.Component {
         console.log(this.state.selected);
         console.log(this.state.currentInterval);
         console.log("IntervalID", this.intervalID);
-      }
-      else {
+      } else {
         this.setState({ selected: 0 });
         console.log(this.state.selected);
       }
       // console.log('This will run every second!');
-    }, this.state.currentInterval)
-
+    }, this.state.currentInterval);
   }
 
   stop() {
-    clearInterval(this.intervalID)
+    clearInterval(this.intervalID);
   }
 
   faster() {
     if (this.intervalID) {
       if (this.state.currentInterval > 250) {
-        let speed = this.state.currentInterval - 250
+        let speed = this.state.currentInterval - 250;
         this.setState({ currentInterval: speed });
       }
-      this.stop()
-      this.play()
+      this.stop();
+      this.play();
     }
-
   }
 
   slower() {
     if (this.intervalID) {
-      let speed = this.state.currentInterval + 250
+      let speed = this.state.currentInterval + 250;
       this.setState({ currentInterval: speed });
-      this.stop()
-      this.play()
+      this.stop();
+      this.play();
     }
-
   }
 
   constructor(props) {
     super(props);
     this.state = {
       selected: 0,
-      currentInterval: 1500
+      currentInterval: 1500,
     };
-    {/* this syntax should only be used
+    {
+      /* this syntax should only be used
       in the constructor, and otherwise
-      this.setState() must be used */}
+      this.setState() must be used */
+    }
   }
   render() {
     let i = this.state.selected;
     return (
-      <div >
-        <div className="m-2"
-
-        >
-          <img src={"images/" + data[i].filename}
-            style={{ width: 300 }}
-          />
+      <div>
+        <div className="m-2">
+          <img src={"images/" + data[i].filename} style={{ width: 300 }} />
           <div className="card-body">
-            <h6 className="card-title">
-              {data[i].filename}</h6>
-            <p className="card-text">
-              {data[i].year}</p>
+            <h6 className="card-title">{data[i].filename}</h6>
+            <p className="card-text">{data[i].year}</p>
           </div>
         </div>
-        <button type="button" className="mx-2 btn btn-success" onClick={(e) => { this.play() }}>Start slideshow</button>
-        <button type="button" className="mx-2 btn btn-danger" onClick={(e) => { this.stop() }}>Stop slideshow</button>
-        <button type="button" className="mx-2 btn btn-warning" onClick={(e) => { this.faster() }}>Faster</button>
-        <button type="button" className="mx-2 btn btn-info" onClick={(e) => { this.slower() }}>Slower</button>
-
+        <button
+          type="button"
+          className="mx-2 btn btn-success"
+          onClick={(e) => {
+            this.play();
+          }}
+        >
+          Start slideshow
+        </button>
+        <button
+          type="button"
+          className="mx-2 btn btn-danger"
+          onClick={(e) => {
+            this.stop();
+          }}
+        >
+          Stop slideshow
+        </button>
+        <button
+          type="button"
+          className="mx-2 btn btn-warning"
+          onClick={(e) => {
+            this.faster();
+          }}
+        >
+          Faster
+        </button>
+        <button
+          type="button"
+          className="mx-2 btn btn-info"
+          onClick={(e) => {
+            this.slower();
+          }}
+        >
+          Slower
+        </button>
       </div>
-
-
-    )
+    );
   }
 }
 
 function Memory_game() {
-
   // reference link: https://github.com/dejwid/react-memo
   // Youtube link: https://www.youtube.com/watch?v=k91Erl0VAc8
   const [cards, setCards] = useState(shuffle([...Images, ...Images]));
@@ -329,24 +356,22 @@ function Memory_game() {
       setActiveCards([index]);
     }
     if (activeCards.length === 1) {
-
-      const card1 = activeCards[0]
-      const card2 = index
+      const card1 = activeCards[0];
+      const card2 = index;
       if (cards[card1] === cards[card2]) {
         if (foundPairs.length + 2 === cards.length) {
           setWon(true);
         }
-        setFoundPairs([...foundPairs, card1, card2])
+        setFoundPairs([...foundPairs, card1, card2]);
         //alert("You found a pair!")
       }
       setActiveCards([...activeCards, index]);
     }
     if (activeCards.length === 2) {
-
       setActiveCards([index]);
     }
     setClicks(clicks + 1);
-    console.log(clicks)
+    //console.log(clicks);
   }
 
   function restart() {
@@ -362,10 +387,14 @@ function Memory_game() {
       <h2>Memory game</h2>
       <div className="board">
         {cards.map((card, index) => {
-          const flippedToFront = (activeCards.indexOf(index) !== -1) || foundPairs.indexOf(index) !== -1;
+          const flippedToFront =
+            activeCards.indexOf(index) !== -1 ||
+            foundPairs.indexOf(index) !== -1;
           return (
-            <div className={"card-outer " + (flippedToFront ? 'flipped' : '')}
-              onClick={() => flipCard(index)}>
+            <div
+              className={"card-outer " + (flippedToFront ? "flipped" : "")}
+              onClick={() => flipCard(index)}
+            >
               <div className="card2">
                 <div className="front">
                   <img src={card} alt="" />
@@ -378,57 +407,130 @@ function Memory_game() {
       </div>
       <div className="stats my-2">
         {won && (
-          <>You won the game! Congratulations!<br />
-
+          <>
+            You won the game! Congratulations!
+            <br />
           </>
         )}
         Clicks: {clicks} &nbsp;&nbsp;&nbsp; Found pairs:{foundPairs.length / 2}
         <br />
         Click restart button to start a new game
-        <button className='btn btn-danger mx-2' onClick={() => restart()}>restart</button>
+        <button className="btn btn-danger mx-2" onClick={() => restart()}>
+          restart
+        </button>
       </div>
     </div>
   );
 }
 
-// class Memory_game extends React.Component {
-//   render() {
-//       return (
-//           <div>
-//               <div className="board">
-//                   {CS.map((file, index) => <GameCard i={index} key={index} />)}
-//                   {CS.map((file, index) => <GameCard i={index} key={index} />)}
+function Tictactoe() {
+  const [turns, setTurns] = useState("x");
+  const [cells, setCells] = useState(Array(9).fill(""));
+  const [winner, setWinner] = useState();
+  const checkwinner = (square)=>{
+    let line ={
+      horizontal:[
+        [0,1,2],
+        [3,4,5],
+        [6,7,8]
+      ],
+      vertical:[
+        [0,3,6],
+        [1,4,7],
+        [2,5,8]
+      ],
+      cross:[
+        [0,4,8],
+        [2,4,6]
+      ]
+    }
 
-//               </div>
-//           </div>
+    for(let c in line){
+      line[c].forEach((pattern)=>{
+        if (square[pattern[0]]===''||
+        square[pattern[1]]===''||
+        square[pattern[2]]==='') {
+          
+        }else if(square[pattern[0]]===square[pattern[1]]&&
+          square[pattern[0]]===square[pattern[2]]){
+            setWinner(square[pattern[0]])
+        }
+      })
+    }
+  }
+  const handleClick = (num) => {
+    // alert(num)
+    if (cells[num]!=='' ) {
+      alert("Alrady clicked")
+      return;
+    }
+    if (winner) {
+      alert("The game is stopped\nStart a new game")
+      return
+    }
+    let square = [...cells];
+    if (turns === "x") {
+      square[num] = "x";
+      setTurns("o");
+    } else {
+      square[num] = "o";
+      setTurns("x");
+    }
+    checkwinner(square)
+    setCells(square)
+    //console.log(square)
+  };
 
-//       );
-//   }
-// }
-
-// class GameCard extends React.Component {
-
-//   constructor(props) {
-//       super(props);
-//   }
-
-//   render() {
-
-
-//       let i = this.props.i;
-//       return (
-
-//           <div className="card-outer">
-//               <div className="card2">
-//                   <div className="front">
-//                       <img src={"cards/" + CS[i].filename} alt="" />
-//                   </div>
-//                   <div className="back"></div>
-//               </div>
-//           </div>
-
-//       )
-//   }
-// }
+  const handlerestart =()=>{
+    setWinner();
+    setCells(Array(9).fill(""))
+  }
+  const Cell = ({ num }) => {
+    return <td onClick={() => handleClick(num)}>{cells[num]}</td>;
+  };
+  return (
+    <div>
+      <h2>Tictactoe</h2>
+      <div className="board2">
+      Turn: {turns}
+        <table id="tictactoe">
+          
+          <tbody>
+            <tr>
+              <Cell num={0} />
+              <Cell num={1} />
+              <Cell num={2} />
+            </tr>
+            <tr>
+              <Cell num={3} />
+              <Cell num={4} />
+              <Cell num={5} />
+            </tr>
+            <tr>
+              <Cell num={6} />
+              <Cell num={7} />
+              <Cell num={8} />
+            </tr>
+          </tbody>
+        </table>
+        
+      </div>
+      <div className="stats my-2">
+        {winner && (
+          <>
+          <p>{winner} is the winner!</p>
+          <br />
+          
+          </>
+          
+        )}
+        Click restart button to start a new game
+        <button className="btn btn-danger mx-2" onClick={() => handlerestart()}>
+          restart
+        </button>
+        </div>
+    </div>
+  );
+}
 
 export default App;
