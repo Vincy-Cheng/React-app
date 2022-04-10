@@ -87,4 +87,32 @@
 
 .list{
   border-right: darkgray 1px solid;
+  overflow-wrap: break-word;
+}
+
+.board2{
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  
+  flex-direction: column;
+  text-align: center;
+  width: 300px;
+  /* display:grid;
+  grid-gap:10px;
+  margin: auto;
+  grid-template-columns: repeat(3, 1fr); */
+}
+
+#tictactoe{
+  background-color: #357;
+}
+
+#tictactoe td{
+  border: 5px solid white;
+  width: 100px;
+  height: 100px;
+  font-size: xx-large;
+  font-weight: bold;
+  color: white;
 }
