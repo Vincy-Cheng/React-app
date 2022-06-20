@@ -5,6 +5,7 @@ import React from "react";
 import Images from "./Images";
 import { useState } from "react";
 import { shuffle } from "lodash";
+
 import {
   BrowserRouter,
   Routes,
@@ -114,6 +115,7 @@ function App() {
               <LongLink to="/slideshow" label="Slideshow" />
               <LongLink to="/memory_game" label="Memory_game" />
               <LongLink to="/tictactoe" label="Tictactoe" />
+              <LongLink to="/gpa_cal" label="GPA_calculator" />
             </ul>
             {/* <hr /> */}
           </div>
@@ -124,6 +126,7 @@ function App() {
               <Route path="/slideshow" element={<Slideshow />} />
               <Route path="/memory_game" element={<Memory_game />} />
               <Route path="/tictactoe" element={<Tictactoe />} />
+              <Route path="/gpa_cal" element={<GPA_calculator />} />
               <Route path="*" element={<NoMatch />} />
             </Routes>
           </div>
@@ -427,46 +430,49 @@ function Tictactoe() {
   const [turns, setTurns] = useState("x");
   const [cells, setCells] = useState(Array(9).fill(""));
   const [winner, setWinner] = useState();
-  const checkwinner = (square)=>{
-    let line ={
-      horizontal:[
-        [0,1,2],
-        [3,4,5],
-        [6,7,8]
+  const checkwinner = (square) => {
+    let line = {
+      horizontal: [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
       ],
-      vertical:[
-        [0,3,6],
-        [1,4,7],
-        [2,5,8]
+      vertical: [
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
       ],
-      cross:[
-        [0,4,8],
-        [2,4,6]
-      ]
-    }
+      cross: [
+        [0, 4, 8],
+        [2, 4, 6],
+      ],
+    };
 
-    for(let c in line){
-      line[c].forEach((pattern)=>{
-        if (square[pattern[0]]===''||
-        square[pattern[1]]===''||
-        square[pattern[2]]==='') {
-          
-        }else if(square[pattern[0]]===square[pattern[1]]&&
-          square[pattern[0]]===square[pattern[2]]){
-            setWinner(square[pattern[0]])
+    for (let c in line) {
+      line[c].forEach((pattern) => {
+        if (
+          square[pattern[0]] === "" ||
+          square[pattern[1]] === "" ||
+          square[pattern[2]] === ""
+        ) {
+        } else if (
+          square[pattern[0]] === square[pattern[1]] &&
+          square[pattern[0]] === square[pattern[2]]
+        ) {
+          setWinner(square[pattern[0]]);
         }
-      })
+      });
     }
-  }
+  };
   const handleClick = (num) => {
     // alert(num)
-    if (cells[num]!=='' ) {
-      alert("Alrady clicked")
+    if (cells[num] !== "") {
+      alert("Alrady clicked");
       return;
     }
     if (winner) {
-      alert("The game is stopped\nStart a new game")
-      return
+      alert("The game is stopped\nStart a new game");
+      return;
     }
     let square = [...cells];
     if (turns === "x") {
@@ -476,15 +482,15 @@ function Tictactoe() {
       square[num] = "o";
       setTurns("x");
     }
-    checkwinner(square)
-    setCells(square)
+    checkwinner(square);
+    setCells(square);
     //console.log(square)
   };
 
-  const handlerestart =()=>{
+  const handlerestart = () => {
     setWinner();
-    setCells(Array(9).fill(""))
-  }
+    setCells(Array(9).fill(""));
+  };
   const Cell = ({ num }) => {
     return <td onClick={() => handleClick(num)}>{cells[num]}</td>;
   };
@@ -492,9 +498,8 @@ function Tictactoe() {
     <div>
       <h2>Tictactoe</h2>
       <div className="board2">
-      Turn: {turns}
+        Turn: {turns}
         <table id="tictactoe">
-          
           <tbody>
             <tr>
               <Cell num={0} />
@@ -513,24 +518,140 @@ function Tictactoe() {
             </tr>
           </tbody>
         </table>
-        
       </div>
       <div className="stats my-2">
         {winner && (
           <>
-          <p>{winner} is the winner!</p>
-          <br />
-          
+            <p>{winner} is the winner!</p>
+            <br />
           </>
-          
         )}
         Click restart button to start a new game
         <button className="btn btn-danger mx-2" onClick={() => handlerestart()}>
           restart
         </button>
-        </div>
+      </div>
     </div>
   );
+}
+
+const Course = (props) => {
+  return (
+    <div>
+      <form>
+        <div className="row mb-2">
+        <div className="col-sm-6">
+        <input
+                type="text"
+                class="form-control"
+                id={"course" + props.index}
+                defaultValue={props.name}
+            onChange={(e) => {props.onNameChange(e.target.value)}} />
+          </div>
+          <div className="col-sm-6">
+        <input
+                type="number"
+                class="form-control"
+                id={"score" + props.index}
+            onChange={(e) => {props.onScoreChange(e.target.value)}} />
+          </div>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+class GPA_calculator extends React.Component {
+
+  // reference: https://codesandbox.io/s/8y44lkw969?file=/index.js
+
+  constructor() {
+    
+    super();
+
+    this.state = {
+      courses: [],
+      gpa: -1.0,
+      nextKey: 0
+    };
+
+  }
+
+  addCourse() {
+
+    this.setState({
+      courses: [...this.state.courses, {
+        name: "Course",
+        score: 4,
+        key: this.state.nextKey
+      }],
+      nextKey: this.state.nextKey + 1
+    });
+
+  }
+
+  calculate(e) {
+
+    e.preventDefault();
+
+    let gpa = 0.0;
+    for (let course of this.state.courses) {
+      gpa+= Number(course.score)
+      console.log("cal")
+      console.log(course.score)
+    }
+    console.log("precal gpa"+gpa)
+    gpa /= this.state.courses.length;
+    console.log("cal gpa"+gpa)
+    this.setState({
+      gpa: Math.round(gpa * 100) / 100
+    });
+
+  }
+
+  onNameChange(index, name) {
+    let newCourses = this.state.courses.slice();
+    newCourses[index].name = name;
+    this.setState({
+      courses: newCourses
+    });
+  }
+
+  onScoreChange(index, score) {
+    let newCourses = this.state.courses.slice();
+    newCourses[index].score = score;
+    this.setState({
+      courses: newCourses
+    });
+    console.log(score)
+  }
+
+  render() {
+    return (
+      <div className="application container mt-5">
+        <h1>GPA Calculator</h1>
+        <form className="mb-2">
+          <div><p>Please press <strong>Add Course</strong> to get started.</p></div>
+          <p>Total number of course: {this.state.courses.length}</p>
+          {this.state.courses.map((course, index) => {
+            return (
+              <Course
+                name={course.name}
+                score={course.score}
+                index={index}
+                key={course.key}
+                onNameChange={(name) => {this.onNameChange(index, name)}}
+                onScoreChange={(score) => {this.onScoreChange(index, score)}} />
+            );
+          })}
+          <button  type="submit" className="btn btn-primary space m-2" onClick={this.calculate.bind(this)}>Get GPA</button>
+          <button  type="button" className="btn btn-primary space m-2" onClick={this.addCourse.bind(this)}>Add Course</button>
+        </form>
+        {this.state.gpa >= 0.0 ? <p>Your GPA is <strong>{this.state.gpa}</strong>.</p> : ""}
+      </div>
+    );
+  }
+
 }
 
 export default App;
